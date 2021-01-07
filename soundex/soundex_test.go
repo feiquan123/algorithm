@@ -1,20 +1,46 @@
 package soundex
 
-import "testing"
+import (
+	"testing"
+
+	. "github.com/smartystreets/goconvey/convey"
+)
 
 func TestSoundex(t *testing.T) {
-	s := ""
-	t.Logf("%q->%q", s, Soundex(s))
+	Convey("Soundex test", t, func() {
+		cases := []struct {
+			s       string
+			expCode string
+		}{
+			{
+				s:       "",
+				expCode: "",
+			},
+			{
+				s:       "_A",
+				expCode: "A000",
+			},
+			{
+				s:       "GAUSS",
+				expCode: "G200",
+			},
+			{
+				s:       "lossrock",
+				expCode: "L262",
+			},
+			{
+				s:       "+_-(){}Zhong中国",
+				expCode: "Z520",
+			},
+		}
+		for _, c := range cases {
+			So(Soundex(c.s), ShouldEqual, c.expCode)
+		}
+	})
+}
 
-	s = "_A"
-	t.Logf("%q->%q", s, Soundex(s))
-
-	s = "GAUSS"
-	t.Logf("%q->%q", s, Soundex(s))
-
-	s = "Feng"
-	t.Logf("%q->%q", s, Soundex(s))
-
-	s = "Zho中国"
-	t.Logf("%q->%q", s, Soundex(s))
+func BenchmarkSoundex(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		Soundex("+_-(){}Zhong中国")
+	}
 }
