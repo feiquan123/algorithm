@@ -68,7 +68,7 @@ func TestNPrime(t *testing.T) {
 	})
 }
 
-var N = uint64(10000)
+var N = uint64(100000)
 
 func BenchmarkNprimeIsPrime(b *testing.B) {
 	for i := 0; i < b.N; i++ {
