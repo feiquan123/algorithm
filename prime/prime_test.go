@@ -9,32 +9,28 @@ import (
 func TestNPrime(t *testing.T) {
 	Convey("Prime test", t, func() {
 		cases := []struct {
-			n    int64
-			exPs []int64
+			n    uint64
+			exPs []uint64
 		}{
 			{
-				n:    -10,
-				exPs: []int64{},
-			},
-			{
 				n:    0,
-				exPs: []int64{},
+				exPs: []uint64{},
 			},
 			{
 				n:    1,
-				exPs: []int64{},
+				exPs: []uint64{},
 			},
 			{
 				n:    2,
-				exPs: []int64{2},
+				exPs: []uint64{2},
 			},
 			{
 				n:    11,
-				exPs: []int64{2, 3, 5, 7, 11},
+				exPs: []uint64{2, 3, 5, 7, 11},
 			},
 			{
 				n:    16,
-				exPs: []int64{2, 3, 5, 7, 11, 13},
+				exPs: []uint64{2, 3, 5, 7, 11, 13},
 			},
 		}
 
@@ -72,7 +68,7 @@ func TestNPrime(t *testing.T) {
 	})
 }
 
-var N = int64(10000)
+var N = uint64(10000)
 
 func BenchmarkNprimeIsPrime(b *testing.B) {
 	for i := 0; i < b.N; i++ {

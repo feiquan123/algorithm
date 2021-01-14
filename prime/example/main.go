@@ -14,7 +14,7 @@ func main() {
 		os.Exit(1)
 	}
 
-	n, err := strconv.ParseInt(os.Args[1], 10, 64)
+	n, err := strconv.ParseUint(os.Args[1], 10, 64)
 	if err != nil {
 		panic(err)
 	}
