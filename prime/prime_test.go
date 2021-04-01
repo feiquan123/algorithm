@@ -1,6 +1,7 @@
 package prime
 
 import (
+	"context"
 	"testing"
 
 	. "github.com/smartystreets/goconvey/convey"
@@ -97,5 +98,15 @@ func BenchmarkNPrimeEratosthenes2(b *testing.B) {
 func BenchmarkNPrimeEratosthenesLine(b *testing.B) {
 	for i := 0; i < b.N; i++ {
 		NPrimeEratosthenesLine(N)
+	}
+}
+
+func BenchmarkConGenPrime(b *testing.B) {
+	ctx, cancel := context.WithCancel(context.Background())
+	defer cancel()
+
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		ConGenPrime(ctx, int(N))
 	}
 }

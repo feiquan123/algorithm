@@ -5,7 +5,7 @@ import "fmt"
 // BinaryFind returns the index of the target
 func BinaryFind(arr []int, tag int) int {
 	var l, r = 0, len(arr) - 1
-	for l < r {
+	for l <= r {
 		m := (l + r) >> 1
 		if tag == arr[m] {
 			return m
