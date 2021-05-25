@@ -37,4 +37,16 @@ func main() {
 	sLen := int(C.strlen(C.s))
 	s1 := string((*[31]byte)(unsafe.Pointer(C.s))[:sLen:sLen])
 	fmt.Println(s1)
+
+	// 不同数组类型转化
+	var x = []int{1, 2, 3, 4, 5}
+	var y = []int64{0}
+
+	xHdr := (*reflect.SliceHeader)(unsafe.Pointer(&x))
+	yHdr := (*reflect.SliceHeader)(unsafe.Pointer(&y))
+
+	yHdr.Data = xHdr.Data
+	yHdr.Cap = xHdr.Cap * int(unsafe.Sizeof(x[0])) / int(unsafe.Sizeof(y[0]))
+	yHdr.Len = xHdr.Len * int(unsafe.Sizeof(x[0])) / int(unsafe.Sizeof(y[0]))
+	fmt.Println(y)
 }
