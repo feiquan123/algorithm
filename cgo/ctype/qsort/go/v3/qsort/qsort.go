@@ -22,7 +22,7 @@ var go_qsort_compare_info struct {
 	sync.Mutex
 }
 
-//export _cgo_qsort_compare
+//export _cgo_qsort_compare, a,b is vlaue of Array
 func _cgo_qsort_compare(a, b unsafe.Pointer) C.int {
 	var (
 		// array memory is locked
