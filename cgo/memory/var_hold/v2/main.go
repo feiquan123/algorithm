@@ -12,5 +12,5 @@ static void printString(char* s){
 import "C"
 
 func main() {
-	C.printString(C.CString("hello world\n"))
+	// C.printString(C.CString("hello world\n"))
 }
