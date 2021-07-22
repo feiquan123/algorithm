@@ -45,11 +45,11 @@ func (id ObjectID) Get() interface{} {
 }
 
 // Free 通过 id 解绑 go 对象，释放内存
-func (id *ObjectID) Free() interface{} {
+func (id ObjectID) Free() interface{} {
 	refs.Lock()
 	defer refs.Unlock()
 
-	obj := refs.objs[*id]
-	delete(refs.objs, *id)
+	obj := refs.objs[id]
+	delete(refs.objs, id)
 	return obj
 }
