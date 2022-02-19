@@ -9,7 +9,7 @@ require (
 	github.com/go-openapi/jsonreference v0.19.6 // indirect
 	github.com/go-openapi/spec v0.20.3 // indirect
 	github.com/go-openapi/swag v0.19.15 // indirect
-	github.com/golang/protobuf v1.2.0 // indirect
+	github.com/golang/protobuf v1.5.2 // indirect
 	github.com/mailru/easyjson v0.7.7 // indirect
 	github.com/mattn/go-isatty v0.0.4 // indirect
 	github.com/pkg/errors v0.8.1 // indirect
@@ -23,5 +23,7 @@ require (
 	golang.org/x/net v0.0.0-20210614182718-04defd469f4e // indirect
 	golang.org/x/sys v0.0.0-20210630005230-0f9fa26af87c // indirect
 	golang.org/x/tools v0.1.5 // indirect
+	google.golang.org/grpc v1.44.0
+	google.golang.org/protobuf v1.26.0
 	gopkg.in/go-playground/validator.v8 v8.18.2 // indirect
 )

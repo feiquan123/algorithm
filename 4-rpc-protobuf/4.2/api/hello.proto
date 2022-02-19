@@ -1,0 +1,21 @@
+/*
+	// plugin: protoc-gen-go
+	protoc --go_out=plugins=grpc:$GOPATH/src hello.proto    
+
+	// plugin: protoc-gen-go-netrpc
+	protoc --go-netrpc_out=plugins=netrpc:$GOPATH/src hello.proto 
+*/
+syntax = "proto3";
+
+package api;
+
+option go_package = "github.com/feiquan123/algorithm/4-rpc-protobuf/4.2/api";
+
+message String {
+    string value = 1;
+}
+
+
+service HelloService {
+	rpc Hello(String) returns (String);
+}
