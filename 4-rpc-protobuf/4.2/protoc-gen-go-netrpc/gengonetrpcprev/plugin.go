@@ -1,4 +1,4 @@
-package gengonetrpcold
+package gengonetrpcprev
 
 import (
 	"bytes"
@@ -9,6 +9,10 @@ import (
 	"github.com/golang/protobuf/protoc-gen-go/generator"
 	"google.golang.org/protobuf/types/descriptorpb"
 )
+
+func init() {
+	generator.RegisterPlugin(new(netrpcPlugin))
+}
 
 type netrpcPlugin struct {
 	*generator.Generator

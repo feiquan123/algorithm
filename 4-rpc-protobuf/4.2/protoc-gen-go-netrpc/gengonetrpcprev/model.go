@@ -1,4 +1,4 @@
-package gengonetrpcold
+package gengonetrpcprev
 
 const (
 	tmpService = `

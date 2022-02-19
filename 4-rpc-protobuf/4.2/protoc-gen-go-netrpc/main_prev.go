@@ -1,18 +1,18 @@
-package gengonetrpcold
+// +build prev
+
+package main
 
 import (
 	"io/ioutil"
 	"os"
 
+	_ "github.com/feiquan123/algorithm/4-rpc-protobuf/4.2/protoc-gen-go-netrpc/gengonetrpcprev"
 	"github.com/golang/protobuf/protoc-gen-go/generator"
 	"google.golang.org/protobuf/proto"
 )
 
-func init() {
-	generator.RegisterPlugin(new(netrpcPlugin))
-}
-
-func Main() {
+//go:generate go install -tags=prev .
+func main() {
 	g := generator.New()
 
 	data, err := ioutil.ReadAll(os.Stdin)

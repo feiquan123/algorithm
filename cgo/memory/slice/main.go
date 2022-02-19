@@ -32,6 +32,6 @@ func freeByteSlice(p []byte) {
 func main() {
 	s := makeBytesSlice(1<<32 + 1)
 	s[len(s)-1] = 125
-	fmt.Printf("slice length: %d, last element:%d \n", len(s), s[len(s)-1])
+	fmt.Printf("slice length: %d, prev element:%d \n", len(s), s[len(s)-1])
 	freeByteSlice(s)
 }

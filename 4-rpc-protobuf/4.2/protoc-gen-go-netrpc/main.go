@@ -1,3 +1,5 @@
+// +build !prev
+
 package main
 
 import (
@@ -10,13 +12,8 @@ import (
 	"google.golang.org/protobuf/compiler/protogen"
 )
 
+//go:generate go install .
 func main() {
-	// {
-	// 	// 旧版通过实现 generator.Plugin 接口，注册后实现
-	// 	gengonetrpcold.Main()
-	// 	return
-	// }
-
 	// 新版使用默认生成的 protogen.Plugin  对象进行操作
 	var (
 		flags        flag.FlagSet
