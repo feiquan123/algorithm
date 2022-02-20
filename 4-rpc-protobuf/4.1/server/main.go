@@ -58,10 +58,10 @@ func httpMain() {
 }
 
 func main() {
-	// rpcMain()
+	rpcMain()
 
 	/*
 		curl -XPOST 'localhost:1234/jsonrpc' -d '{"method":"path/to/pkg.HelloService.Hello","params":["custom msg"],"id":0}'
 	*/
-	httpMain()
+	// httpMain()
 }

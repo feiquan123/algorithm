@@ -6,6 +6,7 @@ import (
 	"net"
 	"net/rpc"
 	"net/rpc/jsonrpc"
+	"time"
 
 	"github.com/feiquan123/algorithm/4-rpc-protobuf/4.1/api"
 )
@@ -30,7 +31,7 @@ func DialHelloService(network, address string) (*HelloServiceClient, error) {
 	}, nil
 }
 
-func main() {
+func mainSync() {
 	client, err := DialHelloService("tcp", "localhost:1234")
 	if err != nil {
 		log.Fatal("dialing:", err)
@@ -43,4 +44,34 @@ func main() {
 	}
 
 	fmt.Println(replay)
+}
+
+func mainAsync() {
+	client, err := DialHelloService("tcp", "localhost:1234")
+	if err != nil {
+		log.Fatal("dialing:", err)
+	}
+
+	// 异步调用
+	helloCall := client.Go(api.HelloServiceName+".Hello", "world", new(string), nil)
+
+	// 处理其他工作
+	time.Sleep(time.Second)
+	fmt.Println("处理其他工作 Done")
+
+	// 获取调用结果
+	helloCall = <-helloCall.Done
+	if err = helloCall.Error; err != nil {
+		log.Fatal(err)
+	}
+
+	args := helloCall.Args.(string)
+	replay := helloCall.Reply.(*string)
+	fmt.Println("args:", args)
+	fmt.Println("replay:", *replay)
+}
+
+func main() {
+	// mainSync()
+	mainAsync()
 }
