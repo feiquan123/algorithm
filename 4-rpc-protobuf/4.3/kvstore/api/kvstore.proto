@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package api;
+
+option go_package = "github.com/feiquan123/algorithm/4-rpc-protobuf/4.3/api";
+
+message String {
+	string value = 1;
+}
+
+service KVStoreService {
+	rpc Get(String) returns (String) ;
+	rpc Set(String) returns (String);
+}
