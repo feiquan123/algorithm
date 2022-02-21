@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package api;
+
+option go_package="github.com/feiquan123/algorithm/4-rpc-protobuf/4.4/api";
+
+message String {
+	string value = 1;
+}
+
+service HelloService {
+	rpc Hello (String) returns (String);
+}
