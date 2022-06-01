@@ -17,7 +17,7 @@ TEXT ·Swap(SB),$0-32
 	MOVQ a+0(FP), AX  // AX = a 
 	MOVQ b+8(FP), BX  // BX = b
 	MOVQ BX, r0+16(FP) // r0 = BX
-	MOVQ AX, r0+24(FP) // r1 = AX
+	MOVQ AX, r1+24(FP) // r1 = AX
 	RET
 
 TEXT ·Foo(SB),$0-32
@@ -26,4 +26,12 @@ TEXT ·Foo(SB),$0-32
 	MOVQ c_dat+8*1(FP), CX // c.Data
 	MOVQ c_len+8*2(FP), DX // c.Len
 	MOVQ c_cap+8*3(FP), DI // c.Cap
+	RET
+
+TEXT ·FooLocal(SB),$32-0
+	MOVQ a-32(SP), AX // a
+	MOVQ b-30(SP), BX // b
+	MOVQ c_data-24(SP), CX // c.Data
+	MOVQ c_len-16(SP), DX // c.Len
+	MOVQ c_cap-8(SP),DI // c.Cap
 	RET
